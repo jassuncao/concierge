@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+    <title>Concierge - Settings</title>
+    <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="menu">
+        <ul>
+            <li><a href="index.html">Index</a></li>
+            <li><a class="active" href="#">Settings</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="column-50">
+                <form method="POST" action="/settings">
+                    <fieldset>
+                      <label for="ssid">SSID</label>
+                      <input type="text" id="ssid" name="ssid" value="{ssid}">
+                      <label for="psk">Password</label>
+                      <input type="text" id="psk" name="psk" value="{psk}">
+                    </fieldset>
+                    <fieldset>
+                      <label for="timeOn">Time On (ms)</label>
+                      <input type="number" id="timeOn" name="timeOn" value="{timeOn}" min="250" max="5000">
+                    </fieldset>
+                    <input class="button-primary" type="submit" value="Save">
+                  </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

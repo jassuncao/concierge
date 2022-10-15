@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+    <title>Concierge - Index</title>
+    <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <link rel="stylesheet" href="style.css">
+    <script lang="javascript">
+        function doPulse(button) {
+            disableButtons(true);
+            fetch('pulse').then((r) => disableButtons(false));
+        }
+
+        function doDelayedPulse(button, delay) {
+            disableButtons(true);
+            fetch(`/pulse?delay=${delay}`).then((r) => setTimeout( () => disableButtons(false), delay * 1000));
+        }
+
+        function disableButtons(disable){
+            document.querySelectorAll('.buttons button').forEach( e => e.disabled=disable)
+        }
+    </script>
+</head>
+<body>
+    <div class="menu">
+        <ul>
+            <li><a class="active" href="index.html">Index</a></li>
+            <li><a href="settings.p.html">Settings</a></li>
+        </ul>
+    </div> 
+    <div class="container buttons">
+        <div class="row">
+            <div class="column column-50 center">
+                <button onclick="doPulse(event.target);">Open</button>
+            </div>
+            <div class="column column-50 center">
+                <button onclick="doDelayedPulse(event.target, 15);">+15 s</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column column-50 center">
+                <button onclick="doDelayedPulse(event.target, 30);">+30 s</button>
+            </div>                
+            <div class="column column-50 center">               
+                <button onclick="doDelayedPulse(event.target, 60);">+60 s</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
